@@ -1,0 +1,10 @@
+{
+  "name": "MD. Mahbub Alam — Software Engineer",
+  "short_name": "Mahbub Alam",
+  "description": "Portfolio of MD. Mahbub Alam, Software Engineer specializing in React, Next.js, and full-stack web applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#fd6f00",
+  "lang": "en"
+}
