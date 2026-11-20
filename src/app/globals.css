@@ -1,0 +1,244 @@
+@import "tailwindcss";
+
+/* =========================================================
+   Theme tokens — change these to restyle the whole site
+   ========================================================= */
+:root {
+  /* Surfaces */
+  --bg: #121212;
+  --bg-elevated: #1a1a1a;
+  --bg-soft: #1f1f1f;
+  --bg-circle: #2a2a2a;
+
+  /* Text */
+  --ink: #ffffff;
+  --ink-soft: #cfcfcf;
+  --muted: #9a9a9a;
+
+  /* Accent (orange) */
+  --accent: #fd6f00;
+  --accent-deep: #e05f00;
+  --accent-soft: rgba(253, 111, 0, 0.16);
+  --accent-glow: rgba(253, 111, 0, 0.22);
+
+  /* Glass / borders */
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-strong: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --border-ink: rgba(255, 255, 255, 0.1);
+
+  /* Effects */
+  --glow-a: rgba(253, 111, 0, 0.18);
+  --glow-b: rgba(253, 111, 0, 0.08);
+  --glow-c: rgba(255, 255, 255, 0.03);
+  --shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-soft: var(--bg-soft);
+  --color-bg-circle: var(--bg-circle);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-soft: var(--accent-soft);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-border-ink: var(--border-ink);
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-figtree);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: var(--font-figtree), sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.glass {
+  background: var(--surface);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.glass-strong {
+  background: var(--surface-strong);
+  backdrop-filter: blur(22px) saturate(1.2);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent-deep);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--ink);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: var(--surface-strong);
+  border-color: var(--ink-soft);
+}
+
+.social-orb {
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid var(--border-strong);
+  color: var(--ink-soft);
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.social-orb:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.section-pad {
+  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.container-max {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.noise {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.site-bg {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 55% 45% at 18% 35%, var(--glow-a), transparent 65%),
+    radial-gradient(ellipse 45% 40% at 82% 20%, var(--glow-b), transparent 60%),
+    radial-gradient(ellipse 50% 45% at 70% 85%, var(--glow-c), transparent 60%),
+    var(--bg);
+}
+
+.site-bg__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px);
+  opacity: 0.55;
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+.site-bg__orb--a {
+  width: 42vw;
+  height: 42vw;
+  max-width: 520px;
+  max-height: 520px;
+  top: 8%;
+  left: -8%;
+  background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+}
+
+.site-bg__orb--b {
+  width: 34vw;
+  height: 34vw;
+  max-width: 420px;
+  max-height: 420px;
+  top: 12%;
+  right: 4%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
+  animation-delay: -6s;
+}
+
+.site-bg__orb--c {
+  width: 48vw;
+  height: 48vw;
+  max-width: 560px;
+  max-height: 560px;
+  bottom: -16%;
+  left: 35%;
+  background: radial-gradient(circle, rgba(253, 111, 0, 0.12), transparent 70%);
+  animation-delay: -11s;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(3%, 4%, 0) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .site-bg__orb {
+    animation: none;
+  }
+}
