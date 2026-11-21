@@ -1,7 +1,6 @@
 import { profile } from "@/data/profile";
 
 export function Footer() {
-  console.log("first");
   return (
     <footer className="relative z-10 section-pad border-t border-border py-8">
       <div className="container-max flex flex-col gap-3 justify-center items-center mx-auto">
