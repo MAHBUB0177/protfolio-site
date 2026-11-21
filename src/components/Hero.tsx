@@ -97,7 +97,7 @@ const statVariants = {
     scale: 1.4,
     transition: {
       duration: 0.4,
-      ease: "easeInOut",
+      ease: "easeInOut" as const,
     },
   },
 };
